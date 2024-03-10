@@ -1,13 +1,13 @@
 # EXPERIMENT-NO--03-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resistor
 
-# DATE :
-# NAME :
-# ROLLNUMBER :
-# DEPARTMENT
+### DATE : 4/3/24
+### NAME : PREMJI P
+### ROLLNUMBER : 212221043004
+### DEPARTMENT : CSE
 ## AIM: 
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
-### COMPONENTS REQUIRED:
+## COMPONENTS REQUIRED:
 1.	FSR  (force sensitive resistor)
 2.	1 KΩ resistor 
 3.	Arduino Uno 
@@ -15,23 +15,16 @@ To interface an FSR(force sensitive resistor) and scale the output voltage obtai
 5.	Connecting wires 
 
 
-### THEORY: 
+## THEORY: 
 FSRs are basically a resistor that changes its resistive value (in ohms Ω) depending on how much it is pressed. These sensors are fairly low cost, and easy to use. They also vary some from sensor to sensor perhaps 10%. FSR's resistance changes as more pressure is applied. When there is no pressure, the sensor looks like an infinite resistor (open circuit), as the pressure increases, the resistance goes down. This graph indicates approximately the resistance of the sensor at different force measurements.
  
 
 ![image](https://user-images.githubusercontent.com/36288975/163532939-d6888ae1-4068-4d83-86a7-fc4c32d5179e.png)
 
-### FIGURE 01 GRAPH OF FORCE vs RESISTANCE **
-
-
-
-
+## FIGURE 01 GRAPH OF FORCE vs RESISTANCE:
 ![image](https://user-images.githubusercontent.com/36288975/163532957-82d57567-a1c3-48c5-8a87-7ea66d6fca49.png)
 
-
-
-
-### FIGURE 02 FORCE SENSITIVE RESITOR FOIL DISC TYPE  
+## FIGURE 02 FORCE SENSITIVE RESITOR FOIL DISC TYPE  
 
 FSRs are often a polymer with conductive material silk-screened on. That means they're plastic and the connection tab is crimped on somewhat delicate material. The best way to connect to these is to simply plug them into a breadboard.
 
@@ -48,24 +41,17 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 ****Where R= 1KΩ in this experiment 
 ****That is, the voltage is proportional to the inverse of the FSR resistance.
 
-
-
-
-
-
-
-
-
-
 ![image](https://user-images.githubusercontent.com/36288975/163532979-a2a5cb5c-f495-442c-843e-bebb82737a35.png)
 
 
-
-### FIGURE-03 CIRCUIT DIAGRAM
-
+![Screenshot (41)](https://github.com/premjivip/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/143831886/9bddb796-652c-47b6-ab6f-ffb96aee6521)
 
 
-### PROCEDURE:
+#### FIGURE-03 CIRCUIT DIAGRAM
+
+
+
+## PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
 3.	If needed, install the drivers.
@@ -78,31 +64,43 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 10.	Plot the graph for the output voltage vs the resistance 
 
 
-### PROGRAM 
- *your roll no 
- * your name 
- * department and year 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+## PROGRAM 
+```
+int LED=7;
+int FSR;
+void setup()
+{
+  pinMode(LED,OUTPUT);
+  Serial.begin(9600);
+}
 
-![image](https://user-images.githubusercontent.com/36288975/188804653-a3154e8e-2655-46f2-9dcd-f425dd1ba109.png)
+void loop()
+{
+  FSR=analogRead(A0);
+  Serial.print("Raw value=");
+  Serial.println(FSR);
+  delay (500);
+  int m;
+  m=map(FSR,0,159,0,10);
+  Serial.print("Mapped value=");
+  Serial.println(m);
+  if(FSR>50)
+  {
+    digitalWrite(LED,LOW);
+    delay(500);
+    digitalWrite(LED,HIGH);
+    delay(500);
+  }   
+  
+}
+```
+
+## TABLE -02 standard deviation table 
+![image](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/103019882/63894379-d74d-4466-acb0-d88acc0b365f)
+![image](https://github.com/vasanthkumarch/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/103019882/1998d5f6-8c9d-42e0-b290-386ff64846a9)
 
 
-### TABLE -02 standard deviation table 
-### Population Standard Deviation
+## Population Standard Deviation
 The population standard deviation, the standard definition of σ, is used when an entire population can be measured, and is the square root of the variance of a given data set. In cases where every member of a population can be sampled, the following equation can be used to find the standard deviation of the entire population:
 
 
@@ -132,4 +130,4 @@ EX:           μ = (1+3+4+7+8) / 5 = 4.6
 
 
 
-### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
+## RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
